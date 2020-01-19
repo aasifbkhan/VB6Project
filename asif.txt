@@ -1,0 +1,31 @@
+Private Sub Command1_Click()
+If Combo1.Text = " 1. Starters.." Then
+Dim con1 As New ADODB.Connection
+Dim rs As New ADODB.Recordset
+Set con1 = New ADODB.Connection
+con1.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Fatima\Desktop\fastfood.mdb;Persist Security Info=False"
+con1.Open
+rs.Open "Select * From Food1", con1, adOpenDynamic, adLockOptimistic
+'Call data
+rs.AddNew
+rs.Fields("Fno").Value = Text1.Text
+rs.Fields("Name").Value = Text2.Text
+rs.Fields("Price").Value = Text3.Text
+MsgBox "Food Item Is Added", vbInformation
+rs.Update
+con1.Close
+End If
+End Sub
+
+Private Sub Form_Load()
+Combo1.AddItem " 1. Starters.."
+Combo1.AddItem " 2. Salad.."
+Combo1.AddItem " 3. Pizza.."
+Combo1.AddItem " 4. Burger.."
+Combo1.AddItem " 5. Pasta And Main.."
+Combo1.AddItem " 6. Sides.."
+Combo1.AddItem " 7. Kids.."
+Combo1.AddItem " 8. Desserts.."
+Combo1.AddItem " 9. Drinks.."
+Combo1.AddItem " 10. Buffet.."
+End Sub

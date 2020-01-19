@@ -1,0 +1,26 @@
+'add data
+Private Sub Command1_Click()
+Dim rsMain As New ADODB.Recordset
+Set conMain = New ADODB.Connection
+conMain.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Documents and Settings\Aasif\Desktop\project\Restaurant1.mdb;persist security info=false"
+conMain.Open
+rsMain.Open "Select f_ID from Food_Type where Fl type='" & Combo1.Text & "'", con1, adOpenDynamic, adLockOptimistic
+Dim foodId As Integer
+foodId = rsMain(0)
+If Combo1.Text = " 1. INDIAN.." Then
+Dim con1 As New ADODB.Connection
+Dim rs As New ADODB.Recordset
+Set con1 = New ADODB.Connection
+con1.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Documents and Settings\Aasif\Desktop\project\Restaurant1.mdb;Persist Security Info=False"
+con1.Open
+rs.Open "Select * From Food_Item", con1, adOpenDynamic, adLockOptimistic
+'Call data
+rs.AddNew
+rs.Fields(0).Value = Text1.Text
+rs.Fields(1).Value = Text2.Text
+rs.Fields(2).Value = Text3.Text
+rs.Fields(3) = foodId
+MsgBox "Food Item Is Added Successfully", vbInformation
+rs.Update
+con1.Close
+End If

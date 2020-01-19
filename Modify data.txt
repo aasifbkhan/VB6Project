@@ -1,0 +1,203 @@
+'add data
+Private Sub Command1_Click()
+If Combo1.Text = " 1. INDIAN.." Then
+Dim con1 As New ADODB.Connection
+Dim rs As New ADODB.Recordset
+Set con1 = New ADODB.Connection
+con1.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Documents and Settings\Aasif\Desktop\project\Restaurant1.mdb;Persist Security Info=False"
+con1.Open
+rs.Open "Select * From Indian", con1, adOpenDynamic, adLockOptimistic
+'Call data
+rs.AddNew
+rs.Fields("Item_no").Value = Text1.Text
+rs.Fields("Item_name").Value = Text2.Text
+rs.Fields("Full_price").Value = Text3.Text
+rs.Fields("Half_price").Value = Text4.Text
+MsgBox "Indian Food Item Is Added Successfully", vbInformation
+rs.Update
+con1.Close
+End If
+
+If Combo1.Text = " 2. CHINESE.." Then
+Dim con2 As New ADODB.Connection
+Dim rs1 As New ADODB.Recordset
+Set con2 = New ADODB.Connection
+con2.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Documents and Settings\Aasif\Desktop\project\Restaurant1.mdb;Persist Security Info=False"
+con2.Open
+rs1.Open "Select * From Chinese", con2, adOpenDynamic, adLockOptimistic
+'Call data
+rs1.AddNew
+rs1.Fields("Item_no").Value = Text1.Text
+rs1.Fields("Item_name").Value = Text2.Text
+rs1.Fields("Full_price").Value = Text3.Text
+rs1.Fields("Half_price").Value = Text4.Text
+MsgBox "Chinese Food Item Is Added Successfully", vbInformation
+rs1.Update
+con2.Close
+End If
+
+If Combo1.Text = " 3. MOUGHLAI.." Then
+Dim con3 As New ADODB.Connection
+Dim rs2 As New ADODB.Recordset
+Set con3 = New ADODB.Connection
+con3.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Documents and Settings\Aasif\Desktop\project\Restaurant1.mdb;Persist Security Info=False"
+con3.Open
+rs2.Open "Select * From Moughlai", con3, adOpenDynamic, adLockOptimistic
+'Call data
+rs2.AddNew
+rs2.Fields("Item_no").Value = Text1.Text
+rs2.Fields("Item_name").Value = Text2.Text
+rs2.Fields("Full_price").Value = Text3.Text
+rs2.Fields("Half_price").Value = Text4.Text
+MsgBox "Moughlai Food Item Is Added Successfully", vbInformation
+rs2.Update
+con3.Close
+End If
+
+End Sub
+'update data
+Private Sub Command2_Click()
+If Combo1.Text = " 1. INDIAN.." Then
+Dim con As New ADODB.Connection
+Dim rs As New ADODB.Recordset
+Set con = New ADODB.Connection
+con.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Documents and Settings\Aasif\Desktop\project\Restaurant1.mdb;persist security info=false"
+con.Open
+rs.Open "select * from Indian where Item_no=" & Val(Text1.Text), con, adOpenDynamic, adLockOptimistic
+rs.Fields("Item_name").Value = Text2.Text
+rs.Fields("Full_price").Value = Text3.Text
+rs.Fields("Half_price").Value = Text4.Text
+MsgBox "Record is Updated", vbInformation
+rs.Update
+con.Close
+End If
+
+If Combo1.Text = " 2. CHINESE.." Then
+Dim con1 As New ADODB.Connection
+Dim rs1 As New ADODB.Recordset
+Set con1 = New ADODB.Connection
+con1.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Documents and Settings\Aasif\Desktop\project\Restaurant1.mdb;persist security info=false"
+con1.Open
+rs1.Open "select * from Chinese where Item_no=" & Val(Text1.Text), con1, adOpenDynamic, adLockOptimistic
+rs1.Fields("Item_name").Value = Text2.Text
+rs1.Fields("Full_price").Value = Text3.Text
+rs1.Fields("Half_price").Value = Text4.Text
+MsgBox "Record is Updated", vbInformation
+rs1.Update
+con1.Close
+End If
+
+If Combo1.Text = " 3. MOUGHLAI.." Then
+Dim con2 As New ADODB.Connection
+Dim rs2 As New ADODB.Recordset
+Set con2 = New ADODB.Connection
+con2.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Documents and Settings\Aasif\Desktop\project\Restaurant1.mdb;persist security info=false"
+con2.Open
+rs2.Open "select * from Moughlai where Item_no=" & Val(Text1.Text), con2, adOpenDynamic, adLockOptimistic
+rs2.Fields("Item_name").Value = Text2.Text
+rs2.Fields("Full_price").Value = Text3.Text
+rs2.Fields("Half_price").Value = Text4.Text
+MsgBox "Record is Updated", vbInformation
+rs2.Update
+con2.Close
+End If
+
+End Sub
+'delete data
+Private Sub Command3_Click()
+If Combo1.Text = " 1. INDIAN.." Then
+Dim con As New ADODB.Connection
+Dim rs As New ADODB.Recordset
+Set con = New ADODB.Connection
+con.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Documents and Settings\Aasif\Desktop\project\Restaurant1.mdb;persist security info=false"
+con.Open
+rs.Open "select * from Indian where Item_no=" & Val(Text1.Text), con, adOpenDynamic, adLockOptimistic
+rs.Fields("Item_name").Value = Text2.Text
+rs.Fields("Full_price").Value = Text3.Text
+rs.Fields("Half_price").Value = Text4.Text
+MsgBox "Record is Deleted", vbInformation
+rs.Delete
+con.Close
+End If
+If Combo1.Text = " 2. CHINESE.." Then
+Dim con1 As New ADODB.Connection
+Dim rs1 As New ADODB.Recordset
+Set con1 = New ADODB.Connection
+con1.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Documents and Settings\Aasif\Desktop\project\Restaurant1.mdb;persist security info=false"
+con1.Open
+rs1.Open "select * from Chinese where Item_no=" & Val(Text1.Text), con1, adOpenDynamic, adLockOptimistic
+rs1.Fields("Item_name").Value = Text2.Text
+rs1.Fields("Full_price").Value = Text3.Text
+rs1.Fields("Half_price").Value = Text4.Text
+MsgBox "Record is Deleted", vbInformation
+rs1.Delete
+con1.Close
+End If
+If Combo1.Text = " 3. MOUGHLAI.." Then
+Dim con2 As New ADODB.Connection
+Dim rs2 As New ADODB.Recordset
+Set con2 = New ADODB.Connection
+con2.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Documents and Settings\Aasif\Desktop\project\Restaurant1.mdb;persist security info=false"
+con2.Open
+rs2.Open "select * from Moughlai where Item_no=" & Val(Text1.Text), con2, adOpenDynamic, adLockOptimistic
+rs2.Fields("Item_name").Value = Text2.Text
+rs2.Fields("Full_price").Value = Text3.Text
+rs2.Fields("Half_price").Value = Text4.Text
+MsgBox "Record is Deleted", vbInformation
+rs2.Delete
+con2.Close
+End If
+End Sub
+
+'Search data
+Private Sub Command4_Click()
+If Combo1.Text = " 1. INDIAN.." Then
+Dim con As New ADODB.Connection
+Dim rs As New ADODB.Recordset
+Set con = New ADODB.Connection
+con.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Documents and Settings\Aasif\Desktop\project\Restaurant1.mdb;persist security info=false"
+con.Open
+rs.Open "Select * from Indian where Item_no=" & Val(Text1.Text), con, adOpenDynamic, adLockOptimistic
+If Text1.Text = rs.Fields("Item_no") Then
+Text2.Text = rs.Fields("Item_name").Value
+Text3.Text = rs.Fields("Full_price").Value
+Text4.Text = rs.Fields("Half_price").Value
+End If
+con.Close
+End If
+If Combo1.Text = " 2. CHINESE.." Then
+Dim con1 As New ADODB.Connection
+Dim rs1 As New ADODB.Recordset
+Set con1 = New ADODB.Connection
+con1.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Documents and Settings\Aasif\Desktop\project\Restaurant1.mdb;persist security info=false"
+con1.Open
+rs1.Open "Select * from Chinese where Item_no=" & Val(Text1.Text), con1, adOpenDynamic, adLockOptimistic
+If Text1.Text = rs1.Fields("Item_no") Then
+Text2.Text = rs1.Fields("Item_name").Value
+Text3.Text = rs1.Fields("Full_price").Value
+Text4.Text = rs1.Fields("Half_price").Value
+End If
+con1.Close
+End If
+If Combo1.Text = " 3. MOUGHLAI.." Then
+Dim con2 As New ADODB.Connection
+Dim rs2 As New ADODB.Recordset
+Set con2 = New ADODB.Connection
+con2.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Documents and Settings\Aasif\Desktop\project\Restaurant1.mdb;persist security info=false"
+con2.Open
+rs2.Open "Select * from Moughlai where Item_no=" & Val(Text1.Text), con2, adOpenDynamic, adLockOptimistic
+If Text1.Text = rs2.Fields("Item_no") Then
+Text2.Text = rs2.Fields("Item_name").Value
+Text3.Text = rs2.Fields("Full_price").Value
+Text4.Text = rs2.Fields("Half_price").Value
+End If
+con2.Close
+End If
+End Sub
+
+Private Sub Form_Load()
+Combo1.AddItem " 1. INDIAN.."
+Combo1.AddItem " 2. CHINESE.."
+Combo1.AddItem " 3. MOUGHLAI.."
+End Sub
+

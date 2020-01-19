@@ -1,0 +1,56 @@
+Private Sub Combo1_Click()
+If Combo1.Text = " 1. INDIAN.." Then
+List1.Clear
+Dim con As New ADODB.Connection
+Dim rs As New ADODB.Recordset
+Set con = New ADODB.Connection
+con.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Documents and Settings\Aasif\Desktop\project\Restaurant1.mdb;Persist Security Info=False"
+con.Open
+rs.Open "Select Item_name From Indian", con, adOpenDynamic, adLockOptimistic
+Do Until rs.EOF
+List1.AddItem rs!Item_name
+rs.MoveNext
+Loop
+rs.Close
+con.Close
+
+End If
+
+If Combo1.Text = " 2. CHINESE.." Then
+List1.Clear
+Dim con1 As New ADODB.Connection
+Dim rs1 As New ADODB.Recordset
+Set con1 = New ADODB.Connection
+con1.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Documents and Settings\Aasif\Desktop\project\Restaurant1.mdb;Persist Security Info=False"
+con1.Open
+rs1.Open "Select Item_name From Chinese", con1, adOpenDynamic, adLockOptimistic
+Do Until rs1.EOF
+List1.AddItem rs1!Item_name
+rs1.MoveNext
+Loop
+rs1.Close
+con1.Close
+End If
+If Combo1.Text = " 3. MOUGHLAI.." Then
+List1.Clear
+Dim con2 As New ADODB.Connection
+Dim rs2 As New ADODB.Recordset
+Set con2 = New ADODB.Connection
+con2.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Documents and Settings\Aasif\Desktop\project\Restaurant1.mdb;Persist Security Info=False"
+con2.Open
+rs2.Open "Select Item_name From Moughlai", con2, adOpenDynamic, adLockOptimistic
+Do Until rs2.EOF
+List1.AddItem rs2!Item_name
+rs2.MoveNext
+Loop
+rs2.Close
+con2.Close
+End If
+End Sub
+
+Private Sub Form_Load()
+Combo1.AddItem " 1. INDIAN.."
+Combo1.AddItem " 2. CHINESE.."
+Combo1.AddItem " 3. MOUGHLAI.."
+End Sub
+
